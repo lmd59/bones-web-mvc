@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-This is test
+	This will be the user profile.
 </body>
 </html>

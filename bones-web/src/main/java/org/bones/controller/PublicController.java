@@ -1,4 +1,4 @@
-package org.bones.spring;
+package org.bones.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -11,13 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
-public class HomeController {
+public class PublicController {
+	//Controller to direct access for 
+	//any publicly accessible pages
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SecureController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -33,7 +32,16 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "public/home";
 	}
-	
+		
+	/**
+	 * Selects view to render by returning its location/name.
+	 */
+	@RequestMapping(value = "/bones-rock.htm", method = RequestMethod.GET)
+	public String bonesRock(Locale locale, Model model) {
+		
+		return "public/bones-rock";
+	}
+
 }
