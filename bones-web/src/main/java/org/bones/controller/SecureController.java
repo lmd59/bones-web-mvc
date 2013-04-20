@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class SecureController {
 	
-	@RequestMapping(value="/user-profile.htm", method = RequestMethod.GET)
+	@RequestMapping(value="/secure/user-profile.htm", method = RequestMethod.GET)
 	public String login(ModelMap model) {
  
 		return "secure/user-profile";

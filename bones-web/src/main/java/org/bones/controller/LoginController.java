@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
  
-	@RequestMapping(value="/welcome.htm", method = RequestMethod.GET)
+	@RequestMapping(value="/secure/login-welcome.htm", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model, Principal principal ) {
  
 		String name = principal.getName();
