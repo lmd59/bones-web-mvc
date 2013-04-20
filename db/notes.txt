@@ -1,0 +1,12 @@
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>4.2.0.Final</version>
+</dependency>
+
+Springtool suite
+spring security dependency
+mysql connector
+hibernate
+spring orm
+jboss tools for java EE plugin

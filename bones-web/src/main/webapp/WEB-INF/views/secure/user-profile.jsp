@@ -8,5 +8,6 @@
 </head>
 <body>
 	This will be the user profile.
+	Current user id ${currUser.username}
 </body>
 </html>

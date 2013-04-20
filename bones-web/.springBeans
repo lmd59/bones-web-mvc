@@ -9,6 +9,8 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/spring-security.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/spring-datasource.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/spring-hibernate.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/spring-dao.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

@@ -13,9 +13,7 @@
  	<http pattern="/login/**" security="none" />
  	
 	<http use-expressions="true">
-		<intercept-url pattern="/welcome*" access="hasRole('role_user')" />
-		<intercept-url pattern="/secure/**" access="hasRole('role_user')" />
-<!-- 		<intercept-url pattern="/**" access="denyAll" /> -->
+		<intercept-url pattern="/secure/**" access="hasRole('ROLE_USER')" />
 		<form-login login-page="/login.htm" default-target-url="/secure/login-welcome.htm"
 			authentication-failure-url="/loginfailed.htm" />
 		<logout logout-success-url="/logout.htm" />
@@ -26,12 +24,12 @@
 			<jdbc-user-service data-source-ref="dataSource"
 	 
 			   users-by-username-query="
-			      select userName,userPassword, enabled 
-			      from users where userName=?" 
+			      select USERNAME,PASSWORD,ENABLED 
+			      from users where USERNAME=?" 
 	 
 			   authorities-by-username-query="
-			      select u.userName, ur.authority from users u, user_roles ur 
-			      where u.userID = ur.userID and u.username =?  " 
+			      select u.USERNAME, ur.AUTHORITY from users u, user_roles ur 
+			      where u.USERID = ur.USERID and u.USERNAME =?  " 
 			/>
 	   	</authentication-provider>
     </authentication-manager>

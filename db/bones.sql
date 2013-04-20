@@ -27,11 +27,17 @@ USE bones;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `userID` int(10) unsigned zerofill NOT NULL auto_increment,
-  `userName` varchar(20) NOT NULL default '',
-  `userPassword` varchar(20) NOT NULL default '',
-  `enabled` tinyint(1) NOT NULL default 0,
-  PRIMARY KEY  (`userID`)
+  `USERID` int(10) unsigned zerofill NOT NULL auto_increment,
+  `USERNAME` varchar(20) NOT NULL default '',
+  `PASSWORD` varchar(20) NOT NULL default '',
+  `ENABLED` tinyint(1) NOT NULL default 0,
+  `FIRSTNAME` varchar(20) NOT NULL default '',
+  `LASTNAME` varchar(20) NOT NULL default '',
+  `NICKNAME` varchar(45) NOT NULL default '',
+  `EMAIL` varchar(20) NOT NULL default '',
+  `CLASSYEAR` varchar(20) NOT NULL default '',
+  `POSITION` varchar(20) NOT NULL default '',
+  PRIMARY KEY  (`USERID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
@@ -39,7 +45,7 @@ CREATE TABLE `users` (
 --
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`userID`,`userName`,`userPassword`, `enabled`) VALUES 
+INSERT INTO `users` (`USERID`,`USERNAME`,`PASSWORD`, `ENABLED`) VALUES 
  (0000000001,'alex','aardvark',1),
  (0000000002,'becca','bear',1),
  (0000000003,'chris','cat',1),
@@ -52,12 +58,12 @@ INSERT INTO `users` (`userID`,`userName`,`userPassword`, `enabled`) VALUES
 
 DROP TABLE IF EXISTS `user_roles`;
 CREATE TABLE `user_roles` (
-  `roleID` int(10) unsigned NOT NULL,
-  `userID` int(10) unsigned NOT NULL,
-  `authority` varchar(45) NOT NULL,
-  PRIMARY KEY (`roleID`),
-  KEY `FK_user_roles` (`userID`),
-  CONSTRAINT `FK_user_roles` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
+  `ROLEID` INT(10) unsigned NOT NULL,
+  `USERID` INT(10) unsigned NOT NULL,
+  `AUTHORITY` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ROLEID`),
+  KEY `FK_user_roles` (`USERID`),
+  CONSTRAINT `FK_user_roles` FOREIGN KEY (`USERID`) REFERENCES `users` (`USERID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
@@ -65,14 +71,14 @@ CREATE TABLE `user_roles` (
 --
 
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` (roleID, userID, authority)
-VALUES (1, 1, 'role_user'),
-  (2, 1, 'role_admin'),
-  (3, 1, 'role_sys_admin'),
-  (4, 2, 'role_user'),
-  (5, 2, 'role_admin'),
-  (6, 3, 'role_user'),
-  (7, 4, 'role_user');
+INSERT INTO `user_roles` (ROLEID, USERID, AUTHORITY)
+VALUES (1, 1, 'ROLE_USER'),
+  (2, 1, 'ROLE_ADMIN'),
+  (3, 1, 'ROLE_SYS_ADMIN'),
+  (4, 2, 'ROLE_USER'),
+  (5, 2, 'ROLE_ADMIN'),
+  (6, 3, 'ROLE_USER'),
+  (7, 4, 'ROLE_USER');
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 
 
