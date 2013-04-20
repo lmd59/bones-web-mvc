@@ -1,6 +1,17 @@
 package org.bones.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="users")
 public class User {
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private int userID;
     private String username;
     private String password;
@@ -11,7 +22,16 @@ public class User {
     private String classYear;
     private String position;
     
-    public User(){}
+    public User(){
+    	this.setUsername("");
+    	this.setPassword("");
+    	this.setFirstname("");
+    	this.setLastname("");
+    	this.setNickname("");
+    	this.setEmail("");
+    	this.setClassYear("");
+    	this.setPosition("");
+    }
 	public int getUserID() {
 		return userID;
 	}
