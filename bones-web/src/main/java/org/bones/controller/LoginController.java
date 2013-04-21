@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
  
-	@RequestMapping(value="/secure/login-welcome.htm", method = RequestMethod.GET)
+	@RequestMapping(value="/login-welcome.htm", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model, Principal principal ) {
  
 		String name = principal.getName();
 		model.addAttribute("username", name);
 		model.addAttribute("message", "Welcome. " +
 				"You have successfully logged in.");
-		return "secure/login-welcome";
+		return "login/login-welcome";
  
 	}
  

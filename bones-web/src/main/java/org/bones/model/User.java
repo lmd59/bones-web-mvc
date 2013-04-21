@@ -1,9 +1,12 @@
 package org.bones.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,8 @@ public class User {
     private String email;
     private String classYear;
     private String position;
+    @OneToMany(mappedBy="user")
+    private Set<UserRole> roles;
     
     public User(){
     	this.setUsername("");
@@ -85,5 +90,11 @@ public class User {
 	}
 	public void setPosition(String position) {
 		this.position = position;
+	}
+	public Set<UserRole> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<UserRole> roles) {
+		this.roles = roles;
 	}
 }

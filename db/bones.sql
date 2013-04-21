@@ -30,7 +30,7 @@ CREATE TABLE `users` (
   `USERID` int(10) unsigned zerofill NOT NULL auto_increment,
   `USERNAME` varchar(20) NOT NULL default '',
   `PASSWORD` varchar(20) NOT NULL default '',
-  `ENABLED` tinyint(1) NOT NULL default 0,
+  `ENABLED` tinyint(1) NOT NULL default 1,
   `FIRSTNAME` varchar(20) NOT NULL default '',
   `LASTNAME` varchar(20) NOT NULL default '',
   `NICKNAME` varchar(45) NOT NULL default '',
@@ -58,7 +58,7 @@ INSERT INTO `users` (`USERID`,`USERNAME`,`PASSWORD`, `ENABLED`) VALUES
 
 DROP TABLE IF EXISTS `user_roles`;
 CREATE TABLE `user_roles` (
-  `ROLEID` INT(10) unsigned NOT NULL,
+  `ROLEID` INT(10) unsigned zerofill NOT NULL auto_increment,
   `USERID` INT(10) unsigned NOT NULL,
   `AUTHORITY` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ROLEID`),
