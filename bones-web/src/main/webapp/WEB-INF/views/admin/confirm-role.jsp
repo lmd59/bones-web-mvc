@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Confirm pending user- permission options checklist
+	<p>User roles have been successfully updated.</p>
+<%-- 	<a href="<c:url value="/admin/viewAllUsers.htm" />" > View all users</a> --%>
+<%-- 	<p><a href="<c:url value="/admin/viewAllUsers.htm" />" > View all users</a></p> --%>
 	
 </body>
 </html>

@@ -65,7 +65,20 @@ public class AdminController {
     	ur.setUser(user);
     	userDao.addUserRole(ur);
     	
-        return "admin/confirm-user";
+        return "admin/confirm-role";
+    }
+    
+    @RequestMapping(value="/admin/makeAdmin/{userID}", method=RequestMethod.GET)
+    public String makeAdminUser(Model model, @PathVariable int userID) {
+    	//TODO: Give users permission and change to enabled
+    	User user = userDao.getUserByID(userID);
+    	
+    	UserRole ur = new UserRole();
+    	ur.setAuthority("ROLE_ADMIN");
+    	ur.setUser(user);
+    	userDao.addUserRole(ur);
+    	
+        return "admin/confirm-role";
     }
     
     @RequestMapping(value="/admin/listAdmin.htm", method=RequestMethod.GET)

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Pending users:
+	<h4>Pending users:</h4>
 	<table>
 	<c:forEach items="${pendingUsers}" var="current">
 		<tr>
@@ -19,18 +19,18 @@
       	</tr>
     </c:forEach>
     </table>
-    Basic users:
+    <h4>Basic users:</h4>
     <table>
 	<c:forEach items="${basicUsers}" var="current">
 		<tr>
         	<td><c:out value="${current.username}" /><td>
         	<td><c:out value="${current.firstname}" /><td>
         	<td><c:out value="${current.lastname}" /><td>
+        	<td><a href="<c:url value="/admin/makeAdmin/${current.userID}" />" > Make admin user</a></td>
 		</tr>
     </c:forEach>
     </table>
-    (Can make admin)
-    Admin users:
+    <h4>Admin users:</h4>
 	<table>
 	<c:forEach items="${adminUsers}" var="current">
 		<tr>
