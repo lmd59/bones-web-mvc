@@ -3,10 +3,15 @@
 * {padding:0; margin:0;}
 
 html {
-/* 	background:url(/img/tiles/wood.png) 0 0 repeat; */
 	padding:15px 15px 0;
 	font-family:sans-serif;
 	font-size:14px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
 
 p, h3 { 
@@ -14,9 +19,15 @@ p, h3 {
 }
 
 div {
-	padding:10px;
-	width:600px;
-	background:#fff;
+/* 	padding:10px; */
+/* 	width:600px; */
+/* 	background:#fff; */
+	
+}
+
+iframe {
+	width: 100%;
+	height:90%;
 }
 
 .tabs li {
