@@ -6,7 +6,7 @@
 <html>
   <head>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <link rel="stylesheet" href="<c:url value='/static/css/tutorial.css'/>" type="text/css" />
+      <link rel="stylesheet" href="<c:url value='/views/static/css/tutorial.css'/>" type="text/css" />
       <title>Logged Out</title>
   </head>
 <body>
