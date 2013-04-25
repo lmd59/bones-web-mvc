@@ -15,31 +15,31 @@
 	
 	<!-- 	Nav links -->
 	<div style="position:absolute;right:20px;">
-		<authz:authorize access="!isAuthenticated()">
-			<a href="<c:url value="/addUserForm.htm" />" > Create Account</a>
-			|
-	        <a href="<c:url value="/login.htm" />" > Login</a>
-	    </authz:authorize>
-	    
-	    <authz:authorize access="isAuthenticated()">
-	    	<a href="<c:url value="/secure/" />" > User Home</a>
-	    	|
-	        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
-	    </authz:authorize>
-	    
-	    
+
+    	<a href="<c:url value="/" />" > Public Home</a>
+    	|
+        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+		
 	</div>
-	
+
 	<!-- 	Tabs -->
 	<ul class='tabs'>
-		<li><a href='#tab1'>Welcome</a></li>
-		<li><a href='#tab2'>Info</a></li>
-		<li><a href='#tab3'>Contacts</a></li>
+		<li><a href='#tab1'>Profile</a></li>
+		<li><a href='#tab2'>Discussions</a></li>
+		<li><a href='#tab3'>Pictures</a></li>
+		<li><a href='#tab4'>Calendar</a></li>
+		<authz:authorize access="hasRole('ROLE_ADMIN')">
+			<li><a href='#tab5'>Admin</a></li>
+		</authz:authorize>
 	</ul>
 	
-	<iframe id="tab1" src="<c:url value='/welcome.htm'/>" ></iframe>
+	<iframe id="tab1" src="<c:url value='/secure/user-profile.htm'/>" ></iframe>
     <iframe id="tab2" src="<c:url value='/info.htm'/>"></iframe>
     <iframe id="tab3" src="<c:url value='/contacts.htm'/>"></iframe>
+    <iframe id="tab4" src="<c:url value='/welcome.htm'/>"></iframe>
+    <authz:authorize access="hasRole('ROLE_ADMIN')">
+    	<iframe id="tab5" src="<c:url value="/admin/listAdmin.htm"/>"></iframe>
+	</authz:authorize>
     
 </body>
 </html>

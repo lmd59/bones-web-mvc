@@ -12,7 +12,12 @@
 <div id="content">
 <h2>Logged Out</h2>
 <p>
-You have been logged out. <a href="<c:url value='/login.htm'/>">Login again</a>.
+You have been logged out. </p>
+<p>
+<a href="<c:url value='/login.htm'/>">Login again</a>.
+</p>
+<p>
+<a href="<c:url value='/'/>">Go to home</a>.
 </p>
 </div>
 </body>

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PublicController {
-	//Controller to direct access for 
-	//any publicly accessible pages
+	//Controller to direct access for any publicly accessible pages
+	//Note: doesn't currently do much that's interesting, but could in the future
 	
 	private static final Logger logger = LoggerFactory.getLogger(SecureController.class);
 	
@@ -26,30 +26,25 @@ public class PublicController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "public/home";
 	}
+	
+	@RequestMapping(value="/welcome.htm", method=RequestMethod.GET)
+    public String getWelcome(Model model) {
+        return "public/welcome";
+    }
+	
+	@RequestMapping(value = "/info.htm", method = RequestMethod.GET)
+	public String getInfo(Model model) {
 		
-	/**
-	 * Selects view to render by returning its location/name.
-	 */
-	@RequestMapping(value = "/bones-rock.htm", method = RequestMethod.GET)
-	public String bonesRock(Locale locale, Model model) {
-		
-		return "public/bones-rock";
+		return "public/info";
 	}
 	
-	@RequestMapping(value="/info.htm", method=RequestMethod.GET)
-    public String getPublicContent(Model model) {
-        return "public/tabbed-content";
-    }
+	@RequestMapping(value = "/contacts.htm", method = RequestMethod.GET)
+	public String getContacts(Model model) {
+		
+		return "public/contacts";
+	}
 
 }

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	User successfully added.
+	Here's some more info about da bones!
 </body>
 </html>
