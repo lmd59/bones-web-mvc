@@ -23,7 +23,10 @@
     <form method="post" action="replyDiscussion.htm">
     <table>
     	<tr><td>Title: </td><td><input type="text" name="title"></td></tr>
-    	<tr><td>Body: </td><td><input type="text" name="content"></td></tr>
+    	
+<!--     	<tr><td>Body: </td><td><input type="text" name="content"></td></tr> -->
+		<tr><td>Body: </td><td><textarea rows="4" cols="50" name="content"></textarea></td></tr>
+    	
     	<tr><td><input type="hidden" name="discussionID" value="${currentDiscussion.discussionID}"></td></tr>
     	
     	<tr><td><input type="submit" value="Reply"></td></tr>

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p><a href="<c:url value="/admin/listAdmin.htm" />" > Return to admin actions</a></p>
 	<h4>Pending users:</h4>
 	<table>
 	<c:forEach items="${pendingUsers}" var="current">

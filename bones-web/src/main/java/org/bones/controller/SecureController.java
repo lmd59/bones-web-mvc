@@ -77,7 +77,7 @@ public class SecureController {
 	@RequestMapping(value="/secure/calendar.htm", method = RequestMethod.GET)
 	public String getCalendarPage(ModelMap model) {
         //TODO: get current user profile with DAO
-		return "secure/celendar";
+		return "secure/calendar";
  
 	}
 	
@@ -103,7 +103,7 @@ public class SecureController {
     		@RequestParam("content") String content,
     		@RequestParam("title") String title) {
 
-		System.out.println("Found discussion reply");
+		
 		Discussion discussion = dao.getDiscussionByID(discussionID);
 		
     	Message message = new Message();
@@ -126,5 +126,31 @@ public class SecureController {
         return ("secure/discussionDetail");
     }
 	
+	@RequestMapping(value="/secure/createDiscussion.htm", method=RequestMethod.POST)
+    public String createDiscussion(Model model, HttpSession session,
+    		@RequestParam("title") String title) {
+
+		
+		System.out.println("Creating discussion");
+		Discussion discussion = new Discussion();
+		discussion.setTitle(title);
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+    	discussion.setStartdate(dateFormat.format(new Date()));
+		dao.addDiscussion(discussion);
+		
+    	
+		
+		List<Discussion> discussionList = dao.getAllDiscussions();
+    	
+        model.addAttribute("discussions", discussionList);
+		
+        //get current user messages from db
+        List<Message> userMessages = dao.getMessagesForUser(
+        		(User)session.getAttribute("user"));
+        
+        model.addAttribute("userMessages", userMessages);
+    	
+        return ("secure/discussions");
+    }
 	
 }

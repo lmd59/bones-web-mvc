@@ -20,7 +20,13 @@
     </c:forEach>
     </table>
     
-    Create new discussion link or form
+    <br/>
+    <i>Create Discussion</i>
+    <form method="post" action="createDiscussion.htm">
+    <table>
+    	<tr><td>Title: </td><td><input type="text" name="title"> <input type="submit" value="Create"></td></tr>
+    </table>
+    </form>
     
     <h4>My messages</h4>
 	<table>

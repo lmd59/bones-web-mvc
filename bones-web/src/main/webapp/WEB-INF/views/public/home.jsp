@@ -22,6 +22,8 @@
 	    </authz:authorize>
 	    
 	    <authz:authorize access="isAuthenticated()">
+	    	Welcome, <c:out value="${sessionScope.user.username}" />
+			|
 	    	<a href="<c:url value="/secure/" />" > User Home</a>
 	    	|
 	        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
