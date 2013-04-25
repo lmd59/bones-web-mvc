@@ -2,7 +2,9 @@ package org.bones.controller;
 
 import java.security.Principal;
 
-import org.bones.dao.UserDAO;
+import javax.servlet.http.HttpSession;
+
+import org.bones.dao.BonesDAO;
 import org.bones.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,17 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 	
 	@Autowired
-	UserDAO userDao;
- 
-	@RequestMapping(value="/login-welcome.htm", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model, Principal principal ) {
- 
-		String name = principal.getName();
-		model.addAttribute("username", name);
-		
-		return "secure/home";
- 
-	}
+	BonesDAO dao;
  
 	@RequestMapping(value="/login.htm", method = RequestMethod.GET)
 	public String login(ModelMap model) {
@@ -72,7 +64,7 @@ public class LoginController {
         u.setEmail(email);
         u.setClassYear(classYear);
         u.setPosition(position);
-        userDao.addUser(u);
+        dao.addUser(u);
         
         
          

@@ -128,11 +128,11 @@ CREATE TABLE `messages` (
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
 INSERT INTO `messages` (MESSAGEID, USERID, DISCUSSIONID, TITLE, CONTENT, CREATEDATE)
 VALUES (1, 1, 1, 'Kids Activities', 'There should be things for kids to do.', '04/25/2013 09:22:22'),
-  (2, 2, 1, '', 'There should also be wine.', '04/25/2013 09:23:22'),
+  (2, 2, 1, 'Wine tour!', 'There should also be wine.', '04/25/2013 09:23:22'),
   (3, 3, 1, 'Chapter House', 'When are we going to Chapter House?', '04/25/2013 09:24:22'),
-  (4, 1, 1, '', 'Always!', '04/25/2013 09:25:22'),
+  (4, 1, 1, 'Chapies', 'Always!', '04/25/2013 09:25:22'),
   (5, 2, 2, 'Too long', 'Kathryn writes really long emails.', '04/25/2013 09:26:22'),
-  (6, 1, 2, '', 'Kathryn can write whatever she wants.', '04/25/2013 09:27:22'),
+  (6, 1, 2, 'Whatevs', 'Kathryn can write whatever she wants.', '04/25/2013 09:27:22'),
   (7, 4, 3, 'Bananas', 'Fake banana flavor is subpar.', '04/25/2013 09:28:22');
 
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;

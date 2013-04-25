@@ -26,6 +26,8 @@ public class User {
     private String position;
     @OneToMany(mappedBy="user")
     private Set<UserRole> roles;
+    @OneToMany(mappedBy="user")
+    private Set<Message> messages;
     
     public User(){
     	this.setUsername("");

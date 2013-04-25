@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.bones.dao.UserDAO;
+import org.bones.dao.BonesDAO;
 import org.bones.model.User;
 import org.bones.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,32 +19,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
      
     @Autowired
-    UserDAO userDao;
+    BonesDAO dao;
      
     
     
     @RequestMapping(value="/admin/confirmPending/{userID}", method=RequestMethod.GET)
     public String confirmPendingUser(Model model, @PathVariable int userID) {
-    	//TODO: Give users permission and change to enabled
-    	User user = userDao.getUserByID(userID);
+    	User user = dao.getUserByID(userID);
     	
     	UserRole ur = new UserRole();
     	ur.setAuthority("ROLE_USER");
     	ur.setUser(user);
-    	userDao.addUserRole(ur);
+    	dao.addUserRole(ur);
     	
         return "admin/confirm-role";
     }
     
     @RequestMapping(value="/admin/makeAdmin/{userID}", method=RequestMethod.GET)
     public String makeAdminUser(Model model, @PathVariable int userID) {
-    	//TODO: Give users permission and change to enabled
-    	User user = userDao.getUserByID(userID);
+    	User user = dao.getUserByID(userID);
     	
     	UserRole ur = new UserRole();
     	ur.setAuthority("ROLE_ADMIN");
     	ur.setUser(user);
-    	userDao.addUserRole(ur);
+    	dao.addUserRole(ur);
     	
         return "admin/confirm-role";
     }
@@ -58,7 +56,7 @@ public class AdminController {
     @RequestMapping(value="/admin/viewAllUsers.htm", method=RequestMethod.GET)
     public String viewAllUsers(Model model) {
     	//Get users from db
-    	List<User> userList = userDao.getAllUsers();
+    	List<User> userList = dao.getAllUsers();
     	//Create user list categories
     	List<User> pendingUsers = new ArrayList<User>();
     	List<User> basicUsers = new ArrayList<User>();

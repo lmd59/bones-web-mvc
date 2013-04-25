@@ -40,7 +40,7 @@
 	 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 		
-	<bean id="userDao" class="org.bones.dao.UserDAO" >
+	<bean id="userDao" class="org.bones.dao.BonesDAO" >
 	    <property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 		
