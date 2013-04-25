@@ -14,13 +14,32 @@
 		<tr>
         	<td><c:out value="${current.username}" /><td>
         	<td><c:out value="${current.firstname}" /><td>
+        	<td><c:out value="${current.lastname}" /><td>
         	<td><a href="<c:url value="/admin/confirmPending/${current.userID}" />" > Confirm pending user</a></td>
       	</tr>
     </c:forEach>
     </table>
     Basic users:
+    <table>
+	<c:forEach items="${basicUsers}" var="current">
+		<tr>
+        	<td><c:out value="${current.username}" /><td>
+        	<td><c:out value="${current.firstname}" /><td>
+        	<td><c:out value="${current.lastname}" /><td>
+		</tr>
+    </c:forEach>
+    </table>
     (Can make admin)
     Admin users:
+	<table>
+	<c:forEach items="${adminUsers}" var="current">
+		<tr>
+        	<td><c:out value="${current.username}" /><td>
+        	<td><c:out value="${current.firstname}" /><td>
+        	<td><c:out value="${current.lastname}" /><td>
+      	</tr>
+    </c:forEach>
+    </table>
 	
 </body>
 </html>

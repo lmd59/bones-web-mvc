@@ -1,5 +1,9 @@
 package org.bones.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.bones.dao.UserDAO;
 import org.bones.model.User;
 import org.bones.model.UserRole;
@@ -72,8 +76,36 @@ public class AdminController {
     
     @RequestMapping(value="/admin/viewAllUsers.htm", method=RequestMethod.GET)
     public String viewAllUsers(Model model) {
+    	//Get users from db
+    	List<User> userList = userDao.getAllUsers();
+    	//Create user list categories
+    	List<User> pendingUsers = new ArrayList<User>();
+    	List<User> basicUsers = new ArrayList<User>();
+    	List<User> adminUsers = new ArrayList<User>();
+    	//Add users to lists
+    	for(User user: userList){
+    		Set<UserRole> roles = user.getRoles();
+    		if(roles.isEmpty()){
+    			pendingUsers.add(user);
+    		}else{
+    			boolean isAdmin = false;
+    			for(UserRole role:roles){
+    				//admins only shown in admin list
+    				if(role.getAuthority().equals(UserRole.ROLE_ADMIN)){
+    					isAdmin = true;
+    				}
+    			}
+    			if(isAdmin){
+					adminUsers.add(user);
+				}else{
+					basicUsers.add(user);
+				}
+    		}
+    	}
     	
-        model.addAttribute("pendingUsers", userDao.getPendingUsers()); 
+        model.addAttribute("pendingUsers", pendingUsers);
+        model.addAttribute("basicUsers", basicUsers);
+        model.addAttribute("adminUsers", adminUsers);
     	
         return "admin/all-users";
     }

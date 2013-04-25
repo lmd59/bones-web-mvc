@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bones.model.User;
 import org.bones.model.UserRole;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDAO {
     
     private SessionFactory sessionFactory;
+    private Session session;
          
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -38,23 +40,35 @@ public class UserDAO {
         List<User> userList = session.createCriteria(User.class).list();
 //        List<User> userList = hibSession.createCriteria(User.class)
 //                .add( Restrictions.eq("country", country) ).list();
+        for(User user: userList){
+        	Hibernate.initialize(user.getRoles());
+        }
+        
         session.close();       
         return userList;
     }
     
-    //TODO: probably don't need to retrieve the entire list
     public List<User> getPendingUsers(){
     	Session session = sessionFactory.openSession();
-        List<User> userList = session.createCriteria(User.class).list();
-        List<User> pendingUsers = new ArrayList<User>();
-    	for(User user: userList){
-    		if(user.getRoles().isEmpty()){
-    			pendingUsers.add(user);
-    		}
-    	}
+        List<User> userList = session.createCriteria(User.class).add( 
+        		Restrictions.isEmpty("roles") ).list();
         session.close();
     	
-    	return pendingUsers;
+    	return userList;//pendingUsers;
+    }
+    
+    public List<User> getConfirmedUsers(){
+    	Session session = sessionFactory.openSession();
+        List<UserRole> userRoleList = session.createCriteria(UserRole.class).add( 
+        		Restrictions.eq("authority", UserRole.ROLE_USER)).list();
+        List<User> confirmedUsers = new ArrayList<User>();
+        for(UserRole role:userRoleList){
+        	User user = role.getUser();
+        	confirmedUsers.add(user);
+        }
+        session.close();
+    	
+    	return confirmedUsers;
     }
     
     public User getUserByID(int userID){
@@ -62,7 +76,7 @@ public class UserDAO {
         
         User user = (User)session.createCriteria(User.class)
                 .add( Restrictions.eq("userID", userID) ).uniqueResult();
-        session.close();       
+        //session.close();       
         return user;
     }
 }

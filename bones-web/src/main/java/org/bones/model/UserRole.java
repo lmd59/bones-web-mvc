@@ -19,6 +19,10 @@ public class UserRole {
 	private User user;
 	private String authority;
 	
+	public static String ROLE_USER="ROLE_USER";
+	public static String ROLE_ADMIN="ROLE_ADMIN";
+	public static String ROLE_SYS_ADMIN="ROLE_SYS_ADMIN";
+	
 	public UserRole(){
 	}
 	public int getRoleID() {
