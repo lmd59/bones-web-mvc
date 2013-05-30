@@ -37,7 +37,9 @@
 	<iframe id="tab1" src="<c:url value='/secure/user-profile.htm'/>" ></iframe>
     <iframe id="tab2" src="<c:url value='/secure/discussions.htm'/>"></iframe>
     <iframe id="tab3" src="<c:url value='/secure/pictures.htm'/>"></iframe>
-    <iframe id="tab4" src="<c:url value='/secure/calendar.htm'/>"></iframe>
+<!--     <iframe id="tab4" src="http://www.google.com/calendar/embed?src=lmd59%40cornell.edu&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
+    <iframe id="tab4" src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=cornell.edu_3fh8e346t0q11m5sro6e4lh6b8%40group.calendar.google.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<%--     <iframe id="tab4" src="<c:url value='/secure/calendar.htm'/>"></iframe> --%>
     <authz:authorize access="hasRole('ROLE_ADMIN')">
     	<iframe id="tab5" src="<c:url value="/admin/listAdmin.htm"/>"></iframe>
 	</authz:authorize>
